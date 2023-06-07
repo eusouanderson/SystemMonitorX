@@ -1,4 +1,5 @@
 # SystemMonitorX
+<img src='logo.png'>
 
 ## Descrição
 
