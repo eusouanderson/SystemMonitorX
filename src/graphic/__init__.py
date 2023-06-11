@@ -1,17 +1,16 @@
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from temp_freq import temp
-
-et = temp
+from temp_freq import ps
 
 
-def graph(window, value=150):
+
+def graph(window, value=ps):
  
     # Configurações iniciais
     
     categorias = ['A','B', 'C', 'D', 'E']
-    valores = [50, 10, 20, 30, 70]
+    valores = [50, 10, 20, 30, 40]
    
     fig, ax = plt.subplots()
     bar_containers = ax.bar(categorias, valores)
