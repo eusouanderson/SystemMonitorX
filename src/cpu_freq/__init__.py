@@ -1,6 +1,5 @@
 import psutil
 
-#number_cpu = psutil.cpu_count()
 
 
 def cpu():
