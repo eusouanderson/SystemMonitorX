@@ -5,33 +5,32 @@ from graphic import graph
 from PIL import Image, ImageTk
 
 
+
 app = tk.Tk()
 
-float_tmp = float(temp())
-float_cpu = float(cpu())
-
 app.geometry('250x1000')
-#app.overrideredirect(True)
 app.wm_overrideredirect(True)
 
+
 def update(time=1000):
-    float_tmp = float(temp())
-    float_cpu = float(cpu())
-    
+
     label_cpu.config(text=f'{cpu()} HZ ')
     label_temp.config(text=f'{temp()} Cº ')
+   
     app.after(time, update)
+    
 
 
-label_cpu = tk.Label(app, text=f'{cpu} HZ ')
+
+label_cpu = tk.Label()
 label_cpu.pack()
 
-label_temp = tk.Label(app, text=f'{temp} Cº ')
+label_temp = tk.Label()
 label_temp.pack()
 
-label_graph = tk.Label(text=graph(app, float_tmp))
-label_graph.pack()
-
+graph(app)
 
 update()
+
+
 app.mainloop()

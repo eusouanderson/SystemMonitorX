@@ -1,6 +1,7 @@
 import psutil
 
 
+
 def temp():
     
     '''
@@ -11,5 +12,10 @@ def temp():
     sensor = psutil.sensors_temperatures()
     acpitz = sensor['coretemp'][0][1]
     temp = '{:.2f}'.format(acpitz)
+
     return temp
 
+
+    
+
+   
