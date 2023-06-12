@@ -14,6 +14,7 @@ def temp():
     temp = '{:.2f}'.format(acpitz)
     return temp
 
-ps = psutil.cpu_percent(interval=1)    
+   
+
 
    

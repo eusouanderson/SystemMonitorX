@@ -1,5 +1,5 @@
 # SystemMonitorX
-<img src='logo.png'>
+<img src='screenshot.png'>
 
 ## Descrição
 
