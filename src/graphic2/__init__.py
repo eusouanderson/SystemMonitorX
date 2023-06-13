@@ -1,40 +1,63 @@
+import psutil
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+from matplotlib import animation
+import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from random import randint
 
+def monitor_cpu(window):
+    # Definir o número de pontos a serem exibidos no gráfico
+    num_pontos = 50
 
-def graph(window, value, interval):
- 
-    # Configurações iniciais
-    
-    categorias = ['CPU ', 'RAM ', 'DISK', 'CORE ', 'NET ']
-    valores = [100, 0, 0, 0, 0]
-   
-    fig, ax = plt.subplots()
-    bar_containers = ax.bar(categorias, valores)
+    # Criar listas vazias para armazenar os valores de tempo e utilização da CPU
+    tempos = []
+    utilizacao_cpu = []
 
-    # Função de atualização
-    def update(frame):
-        
-        for i, container in enumerate(bar_containers):
-            
-            if i == 0 or 1 or 2 or 3 or 4:
-                container.set_height(randint(0, 10 % value))
-                
-                if value >= 6000 :
-                    container.set_color('red')
-                else:
-                    container.set_color('blue')
+    # Configurar o gráfico
+    fig, ax = plt.subplots(figsize=(6, 3))
+    line, = ax.plot(tempos, utilizacao_cpu)
+    ax.set_ylim(0, 100)
+    ax.set_xlabel('Tempo (s)')
+    ax.set_ylabel('Utilização da CPU (%)')
 
-
-    # Criação da animação
-    ani = FuncAnimation(fig, update, frames=range(10), interval=interval)
-    
-
-    # Exibição do gráfico em tempo real
+    # Criar um widget de tela de desenho do Matplotlib
     canvas = FigureCanvasTkAgg(fig, master=window)
     canvas.draw()
     canvas.get_tk_widget().pack()
 
-plt.close()
+    # Atualizar o gráfico em tempo real
+    def update(i):
+        nonlocal tempos, utilizacao_cpu
+        # Obter a utilização da CPU
+        cpu_percent = psutil.cpu_percent()
+
+        # Adicionar o valor atual ao final das listas
+        tempos.append(i)
+        utilizacao_cpu.append(cpu_percent)
+
+        # Limitar as listas ao número de pontos desejado
+        tempos = tempos[-num_pontos:]
+        utilizacao_cpu = utilizacao_cpu[-num_pontos:]
+
+        # Atualizar os dados do gráfico
+        line.set_data(tempos, utilizacao_cpu)
+        ax.relim()
+        ax.autoscale_view()
+        canvas.draw()
+
+    # Atualizar o gráfico a cada segundo
+    anim = animation.FuncAnimation(fig, update, interval=10)
+
+    def start_animation():
+        anim.event_source.start()
+
+    def stop_animation():
+        anim.event_source.stop()
+
+    # Adicionar botões para iniciar e parar a animação
+    start_button = tk.Button(window, text="Start", command=start_animation)
+    start_button.pack()
+
+    stop_button = tk.Button(window, text="Stop", command=stop_animation)
+    stop_button.pack()
+
+
