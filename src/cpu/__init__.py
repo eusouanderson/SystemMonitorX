@@ -15,22 +15,19 @@ def cpu_freq():
     return cpuf
 
 
-def cpu_usage():
+def cpu_count():
     """
-    Retorna a soma da CPU em percentual de todos os núcleo.
+    Retorna a soma da CPU .
 
     Exemplo:
-    >>> cpu_usage()
+    >>> cpu_cont():
 
-    '4 Cores 50.00 %'
+    '4'
     """
+    count_cpu = psutil.cpu_count()
+    
+    
+    
 
-    usage_cpu = psutil.cpu_percent(interval=1, percpu=True)
-    number = 0
-    for cpu in usage_cpu:
-        number += 1
-
-        cpu_U = f'{number} Cores {sum(usage_cpu):.2f} % '
-
-    return cpu_U
+    return cpu_count
 

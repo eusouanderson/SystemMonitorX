@@ -45,7 +45,7 @@ def monitor_cpu(window):
         canvas.draw()
 
     # Atualizar o gráfico a cada segundo
-    anim = animation.FuncAnimation(fig, update, interval=10)
+    anim = animation.FuncAnimation(fig, update, interval=10, cache_frame_data=False)
 
     def start_animation():
         anim.event_source.start()
