@@ -14,11 +14,12 @@ msto= 100
 
 
 def update_proc(time=msto):
-    #label_cpu_usage.config(text=f'{cpu_count()} Usage')
+    label_cpu_usage.config(text=f'{cpu_count()} Cpus')
+    label_cpu_usage.configure(bg='#404040', fg='#bfbfbf')
     label_cpu.config(text=f'{cpu_freq()} HZ CPU')
-    label_cpu.configure(bg='#777')
+    label_cpu.configure(bg='#404040', fg='#bfbfbf')
     label_temp.config(text=f'{temp_core()} Cº CPU')
-    label_temp.configure(bg='#777')
+    label_temp.configure(bg='#404040', fg='#bfbfbf')
     app.after(time, update_proc)
 
 

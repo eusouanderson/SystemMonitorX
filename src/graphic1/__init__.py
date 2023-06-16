@@ -35,11 +35,16 @@ def graph(window):
         nonlocal bar_containers
 
         # Obter o valor da frequência da CPU usando o psutil
-        cpu_freq = psutil.cpu_freq().current
-        mem_percnt = psutil.virtual_memory().percent
+        cpu_freq = psutil.cpu_freq().current / 100
+        mem_percnt = psutil.virtual_memory().percent 
+        dis_usage = psutil.disk_usage('/').used / 1000000000
+        
         # Atualizar o valor da barra correspondente
-        bar_containers[0].set_height(cpu_freq /100)
+        bar_containers[0].set_height(round(cpu_freq))
         bar_containers[1].set_height(mem_percnt)
+        bar_containers[2].set_height(round(dis_usage, 2))
+        print(round(dis_usage, 2))
+        
         # Redesenhar o gráfico
         ax.relim()
         ax.autoscale_view()
