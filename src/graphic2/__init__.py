@@ -4,7 +4,7 @@ from matplotlib import animation
 import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-def monitor_cpu(window):
+def graph2(window):
     # Definir o número de pontos a serem exibidos no gráfico
     num_pontos = 50
 

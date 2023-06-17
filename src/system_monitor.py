@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from graphic1 import graph
-from graphic2 import monitor_cpu
+from graphic2 import graph2
 from cpu import cpu_freq, cpu_count
 from temp_freq import temp_core
 
@@ -33,8 +33,12 @@ label_temp = tk.Label()
 
 label_temp.pack()
 
-graph(app)
-monitor_cpu(app)
+def button():
+    graph(app)
+    graph2(app)
+
+Button_graph = ttk.Button(text='Graphic', command=button)
+Button_graph.pack()
 
 
 
