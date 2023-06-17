@@ -1,5 +1,5 @@
 # SystemMonitorX
-<img src='screenshot.png'>
+<img src='system.gif'>
 
 ## Descrição
 

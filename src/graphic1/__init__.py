@@ -14,9 +14,6 @@ def graph(window):
     categorias = ['CPU ', 'RAM ', 'DISK', 'CORE ', 'NET ']
     valores = [bar1, bar2, bar3, bar4, bar5]
     
-    # Criar listas vazias para armazenar os valores de tempo e utilização da CPU
-
-
    # Configurando gráfico
     fig, ax = plt.subplots(figsize=(6, 3))
     bar_containers = ax.bar(categorias, valores)
