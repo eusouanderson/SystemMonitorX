@@ -25,9 +25,5 @@ def cpu_count():
     '4'
     """
     count_cpu = psutil.cpu_count()
-    
-    
-    
 
     return count_cpu
-

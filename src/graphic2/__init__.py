@@ -4,6 +4,7 @@ from matplotlib import animation
 import tkinter as tk
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
+
 def graph2(window):
     # Definir o número de pontos a serem exibidos no gráfico
     num_pontos = 50
@@ -14,7 +15,7 @@ def graph2(window):
 
     # Configurar o gráfico
     fig, ax = plt.subplots(figsize=(6, 3))
-    line, = ax.plot(tempos, utilizacao_cpu)
+    (line,) = ax.plot(tempos, utilizacao_cpu)
     ax.set_ylim(0, 100)
     ax.set_xlabel('Tempo (s)')
     ax.set_ylabel('Utilização da CPU (%)')
@@ -45,19 +46,31 @@ def graph2(window):
         canvas.draw()
 
     # Atualizar o gráfico a cada segundo
-    anim = animation.FuncAnimation(fig, update, interval=10, cache_frame_data=False)
+    anim = animation.FuncAnimation(
+        fig, update, interval=10, cache_frame_data=False
+    )
 
     def start_animation():
         anim.event_source.start()
 
     def stop_animation():
         anim.event_source.stop()
+    
+    def closed():
+        canvas.get_tk_widget().destroy()
+        start_button.destroy()
+        stop_button.destroy()
+        close_button.destroy()
 
     # Adicionar botões para iniciar e parar a animação
-    start_button = tk.Button(window, text="Start", command=start_animation)
-    start_button.pack()
+    start_button = tk.Button(window, text='Start', command=start_animation)
+    start_button.configure(bg='#777')
+    start_button.pack(side="left")
 
-    stop_button = tk.Button(window, text="Stop", command=stop_animation)
-    stop_button.pack()
+    stop_button = tk.Button(window, text='Stop', command=stop_animation)
+    stop_button.configure(bg='#777')
+    stop_button.pack(side="left")
 
-
+    close_button = tk.Button(window, text='Close', command=closed)
+    close_button.configure(bg='#777')
+    close_button.pack(side="left")
