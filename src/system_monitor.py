@@ -4,7 +4,9 @@ from graphic1 import graph
 from graphic2 import graph2
 from cpu import cpu_freq, cpu_count
 from temp_freq import temp_core
+from os import getcwd
 
+print(getcwd())
 app = tk.Tk()
 
 
