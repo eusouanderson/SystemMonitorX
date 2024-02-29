@@ -16,8 +16,22 @@ O SystemMonitorX é um programa de monitoramento de desempenho do PC que permite
 ## Instalação
 
 1. Clone este repositório para o seu computador.
-2. Certifique-se de ter as dependências necessárias instaladas. Consulte o arquivo `requirements.txt` para obter mais informações.
-3. Execute o arquivo `system_monitor.py` para iniciar o programa.
+2. Certifique-se de ter o Poetry instalado no seu sistema. Se não tiver, você pode instalá-lo usando o pip:
+
+---pip install poetry
+
+
+
+3. Com o Poetry instalado, navegue até o diretório raiz do projeto e execute o seguinte comando para instalar as dependências:
+
+
+---poetry install
+
+
+
+Isso instalará todas as dependências listadas no arquivo `pyproject.toml`.
+
+4. Execute o arquivo `system_monitor.py` para iniciar o programa.
 
 ## Contribuição
 
@@ -27,3 +41,4 @@ Contribuições são bem-vindas! Se você deseja melhorar este projeto, siga as 
 
 Este projeto está licenciado sob a Licença Pública Geral GNU (GNU General Public License - GPL). Consulte o arquivo LICENSE.md para obter mais detalhes sobre os termos da licença.
 
+   
