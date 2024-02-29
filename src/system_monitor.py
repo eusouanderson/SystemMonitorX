@@ -63,6 +63,8 @@ Button_exit.pack()
 
 update_proc()
 
+#Print TButon
+
 print(ttk.Style().lookup('TButton', 'font'))
 
 if __name__ == '__main__':
